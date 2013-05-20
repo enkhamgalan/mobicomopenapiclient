@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D82F804174626D100897B70 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D82F803174626D100897B70 /* UIKit.framework */; };
+		3D82F806174626D100897B70 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D82F805174626D100897B70 /* Foundation.framework */; };
+		3D82F808174626D100897B70 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D82F807174626D100897B70 /* CoreGraphics.framework */; };
+		3D82F80E174626D100897B70 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D82F80C174626D100897B70 /* InfoPlist.strings */; };
+		3D82F810174626D100897B70 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D82F80F174626D100897B70 /* main.m */; };
+		3D82F814174626D100897B70 /* MobiComAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D82F813174626D100897B70 /* MobiComAppDelegate.m */; };
+		3D82F816174626D100897B70 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D82F815174626D100897B70 /* Default.png */; };
+		3D82F818174626D100897B70 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D82F817174626D100897B70 /* Default@2x.png */; };
+		3D82F81A174626D100897B70 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D82F819174626D100897B70 /* Default-568h@2x.png */; };
+		3D82F81D174626D100897B70 /* MobiComViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D82F81C174626D100897B70 /* MobiComViewController.m */; };
+		3D82F820174626D100897B70 /* MobiComViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D82F81E174626D100897B70 /* MobiComViewController_iPhone.xib */; };
+		3D82F823174626D100897B70 /* MobiComViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D82F821174626D100897B70 /* MobiComViewController_iPad.xib */; };
+		3D82F837174627ED00897B70 /* libOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D82F834174627B600897B70 /* libOAuth2Client.a */; };
+		3D82F839174628B300897B70 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D82F838174628B300897B70 /* Security.framework */; };
+		3D82F86A1746419900897B70 /* MobiComWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D82F8681746419900897B70 /* MobiComWebViewController.m */; };
+		3D82F86B1746419900897B70 /* MobiComWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D82F8691746419900897B70 /* MobiComWebViewController.xib */; };
+		3D82F86F1746521000897B70 /* MobiComRequestTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D82F86D1746521000897B70 /* MobiComRequestTokenViewController.m */; };
+		3D82F8701746521000897B70 /* MobiComRequestTokenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D82F86E1746521000897B70 /* MobiComRequestTokenViewController.xib */; };
+		3D82F880174661FC00897B70 /* MobiComRetrieveResourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D82F87E174661FC00897B70 /* MobiComRetrieveResourceViewController.m */; };
+		3D82F881174661FC00897B70 /* MobiComRetrieveResourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D82F87F174661FC00897B70 /* MobiComRetrieveResourceViewController.xib */; };
+		3D82F88E1746736300897B70 /* LRURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D82F88D1746736200897B70 /* LRURLRequestOperation.m */; };
+		3D82F8911746738400897B70 /* NSDictionary+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D82F8901746738400897B70 /* NSDictionary+QueryString.m */; };
+		3D82F894174673A700897B70 /* NSString+QueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D82F893174673A600897B70 /* NSString+QueryString.m */; };
+		3D82F8A2174679FF00897B70 /* MobiComResourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D82F8A0174679FE00897B70 /* MobiComResourceViewController.m */; };
+		3D82F8A3174679FF00897B70 /* MobiComResourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D82F8A1174679FE00897B70 /* MobiComResourceViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3D82F831174627B600897B70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D82F829174627B600897B70 /* OAuth2Client.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 942FFCD612315E0A00E6C65E;
+			remoteInfo = OAuth2Client.framework;
+		};
+		3D82F833174627B600897B70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D82F829174627B600897B70 /* OAuth2Client.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = OAuth2Client;
+		};
+		3D82F835174627E600897B70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D82F829174627B600897B70 /* OAuth2Client.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = OAuth2Client;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3D82F7FF174626D100897B70 /* client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = client.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D82F803174626D100897B70 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3D82F805174626D100897B70 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3D82F807174626D100897B70 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3D82F80B174626D100897B70 /* client-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "client-Info.plist"; sourceTree = "<group>"; };
+		3D82F80D174626D100897B70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3D82F80F174626D100897B70 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3D82F811174626D100897B70 /* client-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "client-Prefix.pch"; sourceTree = "<group>"; };
+		3D82F812174626D100897B70 /* MobiComAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobiComAppDelegate.h; sourceTree = "<group>"; };
+		3D82F813174626D100897B70 /* MobiComAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobiComAppDelegate.m; sourceTree = "<group>"; };
+		3D82F815174626D100897B70 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3D82F817174626D100897B70 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		3D82F819174626D100897B70 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3D82F81B174626D100897B70 /* MobiComViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobiComViewController.h; sourceTree = "<group>"; };
+		3D82F81C174626D100897B70 /* MobiComViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobiComViewController.m; sourceTree = "<group>"; };
+		3D82F81F174626D100897B70 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MobiComViewController_iPhone.xib; sourceTree = "<group>"; };
+		3D82F822174626D100897B70 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MobiComViewController_iPad.xib; sourceTree = "<group>"; };
+		3D82F829174627B600897B70 /* OAuth2Client.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuth2Client.xcodeproj; path = OAuth2Client/OAuth2Client.xcodeproj; sourceTree = "<group>"; };
+		3D82F838174628B300897B70 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3D82F8671746419900897B70 /* MobiComWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobiComWebViewController.h; sourceTree = "<group>"; };
+		3D82F8681746419900897B70 /* MobiComWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobiComWebViewController.m; sourceTree = "<group>"; };
+		3D82F8691746419900897B70 /* MobiComWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobiComWebViewController.xib; sourceTree = "<group>"; };
+		3D82F86C1746520F00897B70 /* MobiComRequestTokenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobiComRequestTokenViewController.h; sourceTree = "<group>"; };
+		3D82F86D1746521000897B70 /* MobiComRequestTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobiComRequestTokenViewController.m; sourceTree = "<group>"; };
+		3D82F86E1746521000897B70 /* MobiComRequestTokenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobiComRequestTokenViewController.xib; sourceTree = "<group>"; };
+		3D82F87D174661FC00897B70 /* MobiComRetrieveResourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobiComRetrieveResourceViewController.h; sourceTree = "<group>"; };
+		3D82F87E174661FC00897B70 /* MobiComRetrieveResourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobiComRetrieveResourceViewController.m; sourceTree = "<group>"; };
+		3D82F87F174661FC00897B70 /* MobiComRetrieveResourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobiComRetrieveResourceViewController.xib; sourceTree = "<group>"; };
+		3D82F88C1746736200897B70 /* LRURLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRURLRequestOperation.h; sourceTree = "<group>"; };
+		3D82F88D1746736200897B70 /* LRURLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRURLRequestOperation.m; sourceTree = "<group>"; };
+		3D82F88F1746738400897B70 /* NSDictionary+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+QueryString.h"; sourceTree = "<group>"; };
+		3D82F8901746738400897B70 /* NSDictionary+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+QueryString.m"; sourceTree = "<group>"; };
+		3D82F892174673A600897B70 /* NSString+QueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QueryString.h"; sourceTree = "<group>"; };
+		3D82F893174673A600897B70 /* NSString+QueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QueryString.m"; sourceTree = "<group>"; };
+		3D82F89F174679FE00897B70 /* MobiComResourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobiComResourceViewController.h; sourceTree = "<group>"; };
+		3D82F8A0174679FE00897B70 /* MobiComResourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobiComResourceViewController.m; sourceTree = "<group>"; };
+		3D82F8A1174679FE00897B70 /* MobiComResourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobiComResourceViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D82F7FC174626D100897B70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D82F839174628B300897B70 /* Security.framework in Frameworks */,
+				3D82F837174627ED00897B70 /* libOAuth2Client.a in Frameworks */,
+				3D82F804174626D100897B70 /* UIKit.framework in Frameworks */,
+				3D82F806174626D100897B70 /* Foundation.framework in Frameworks */,
+				3D82F808174626D100897B70 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D82F7F4174626D100897B70 = {
+			isa = PBXGroup;
+			children = (
+				3D82F838174628B300897B70 /* Security.framework */,
+				3D82F829174627B600897B70 /* OAuth2Client.xcodeproj */,
+				3D82F809174626D100897B70 /* client */,
+				3D82F800174626D100897B70 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3D82F800174626D100897B70 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D82F7FF174626D100897B70 /* client.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D82F802174626D100897B70 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D82F803174626D100897B70 /* UIKit.framework */,
+				3D82F805174626D100897B70 /* Foundation.framework */,
+				3D82F807174626D100897B70 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		3D82F809174626D100897B70 /* client */ = {
+			isa = PBXGroup;
+			children = (
+				3D82F892174673A600897B70 /* NSString+QueryString.h */,
+				3D82F893174673A600897B70 /* NSString+QueryString.m */,
+				3D82F88F1746738400897B70 /* NSDictionary+QueryString.h */,
+				3D82F8901746738400897B70 /* NSDictionary+QueryString.m */,
+				3D82F88C1746736200897B70 /* LRURLRequestOperation.h */,
+				3D82F88D1746736200897B70 /* LRURLRequestOperation.m */,
+				3D82F812174626D100897B70 /* MobiComAppDelegate.h */,
+				3D82F813174626D100897B70 /* MobiComAppDelegate.m */,
+				3D82F81B174626D100897B70 /* MobiComViewController.h */,
+				3D82F81C174626D100897B70 /* MobiComViewController.m */,
+				3D82F81E174626D100897B70 /* MobiComViewController_iPhone.xib */,
+				3D82F821174626D100897B70 /* MobiComViewController_iPad.xib */,
+				3D82F80A174626D100897B70 /* Supporting Files */,
+				3D82F8671746419900897B70 /* MobiComWebViewController.h */,
+				3D82F8681746419900897B70 /* MobiComWebViewController.m */,
+				3D82F8691746419900897B70 /* MobiComWebViewController.xib */,
+				3D82F802174626D100897B70 /* Frameworks */,
+				3D82F86C1746520F00897B70 /* MobiComRequestTokenViewController.h */,
+				3D82F86D1746521000897B70 /* MobiComRequestTokenViewController.m */,
+				3D82F86E1746521000897B70 /* MobiComRequestTokenViewController.xib */,
+				3D82F87D174661FC00897B70 /* MobiComRetrieveResourceViewController.h */,
+				3D82F87E174661FC00897B70 /* MobiComRetrieveResourceViewController.m */,
+				3D82F87F174661FC00897B70 /* MobiComRetrieveResourceViewController.xib */,
+				3D82F89F174679FE00897B70 /* MobiComResourceViewController.h */,
+				3D82F8A0174679FE00897B70 /* MobiComResourceViewController.m */,
+				3D82F8A1174679FE00897B70 /* MobiComResourceViewController.xib */,
+			);
+			path = client;
+			sourceTree = "<group>";
+		};
+		3D82F80A174626D100897B70 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D82F80B174626D100897B70 /* client-Info.plist */,
+				3D82F80C174626D100897B70 /* InfoPlist.strings */,
+				3D82F80F174626D100897B70 /* main.m */,
+				3D82F811174626D100897B70 /* client-Prefix.pch */,
+				3D82F815174626D100897B70 /* Default.png */,
+				3D82F817174626D100897B70 /* Default@2x.png */,
+				3D82F819174626D100897B70 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3D82F82A174627B600897B70 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D82F832174627B600897B70 /* OAuth2Client.framework */,
+				3D82F834174627B600897B70 /* libOAuth2Client.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D82F7FE174626D100897B70 /* client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D82F826174626D100897B70 /* Build configuration list for PBXNativeTarget "client" */;
+			buildPhases = (
+				3D82F7FB174626D100897B70 /* Sources */,
+				3D82F7FC174626D100897B70 /* Frameworks */,
+				3D82F7FD174626D100897B70 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D82F836174627E600897B70 /* PBXTargetDependency */,
+			);
+			name = client;
+			productName = client;
+			productReference = 3D82F7FF174626D100897B70 /* client.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D82F7F6174626D100897B70 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MobiCom;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = MobiCom;
+			};
+			buildConfigurationList = 3D82F7F9174626D100897B70 /* Build configuration list for PBXProject "client" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3D82F7F4174626D100897B70;
+			productRefGroup = 3D82F800174626D100897B70 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3D82F82A174627B600897B70 /* Products */;
+					ProjectRef = 3D82F829174627B600897B70 /* OAuth2Client.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				3D82F7FE174626D100897B70 /* client */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3D82F832174627B600897B70 /* OAuth2Client.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OAuth2Client.framework;
+			remoteRef = 3D82F831174627B600897B70 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3D82F834174627B600897B70 /* libOAuth2Client.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOAuth2Client.a;
+			remoteRef = 3D82F833174627B600897B70 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D82F7FD174626D100897B70 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D82F80E174626D100897B70 /* InfoPlist.strings in Resources */,
+				3D82F816174626D100897B70 /* Default.png in Resources */,
+				3D82F818174626D100897B70 /* Default@2x.png in Resources */,
+				3D82F81A174626D100897B70 /* Default-568h@2x.png in Resources */,
+				3D82F820174626D100897B70 /* MobiComViewController_iPhone.xib in Resources */,
+				3D82F823174626D100897B70 /* MobiComViewController_iPad.xib in Resources */,
+				3D82F86B1746419900897B70 /* MobiComWebViewController.xib in Resources */,
+				3D82F8701746521000897B70 /* MobiComRequestTokenViewController.xib in Resources */,
+				3D82F881174661FC00897B70 /* MobiComRetrieveResourceViewController.xib in Resources */,
+				3D82F8A3174679FF00897B70 /* MobiComResourceViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D82F7FB174626D100897B70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D82F810174626D100897B70 /* main.m in Sources */,
+				3D82F814174626D100897B70 /* MobiComAppDelegate.m in Sources */,
+				3D82F81D174626D100897B70 /* MobiComViewController.m in Sources */,
+				3D82F86A1746419900897B70 /* MobiComWebViewController.m in Sources */,
+				3D82F86F1746521000897B70 /* MobiComRequestTokenViewController.m in Sources */,
+				3D82F880174661FC00897B70 /* MobiComRetrieveResourceViewController.m in Sources */,
+				3D82F88E1746736300897B70 /* LRURLRequestOperation.m in Sources */,
+				3D82F8911746738400897B70 /* NSDictionary+QueryString.m in Sources */,
+				3D82F894174673A700897B70 /* NSString+QueryString.m in Sources */,
+				3D82F8A2174679FF00897B70 /* MobiComResourceViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3D82F836174627E600897B70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OAuth2Client;
+			targetProxy = 3D82F835174627E600897B70 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D82F80C174626D100897B70 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D82F80D174626D100897B70 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3D82F81E174626D100897B70 /* MobiComViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D82F81F174626D100897B70 /* en */,
+			);
+			name = MobiComViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		3D82F821174626D100897B70 /* MobiComViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D82F822174626D100897B70 /* en */,
+			);
+			name = MobiComViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3D82F824174626D100897B70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3D82F825174626D100897B70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3D82F827174626D100897B70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "client/client-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/OAuth2Client/**";
+				INFOPLIST_FILE = "client/client-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3D82F828174626D100897B70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "client/client-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/OAuth2Client/**";
+				INFOPLIST_FILE = "client/client-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D82F7F9174626D100897B70 /* Build configuration list for PBXProject "client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D82F824174626D100897B70 /* Debug */,
+				3D82F825174626D100897B70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D82F826174626D100897B70 /* Build configuration list for PBXNativeTarget "client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D82F827174626D100897B70 /* Debug */,
+				3D82F828174626D100897B70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D82F7F6174626D100897B70 /* Project object */;
+}
