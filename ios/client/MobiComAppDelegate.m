@@ -10,8 +10,8 @@
 #import "MobiComViewController.h"
 
 /* MobiCom Open API баталгаажуулалт */
-static NSString* clientId = @"3fe8654e930afcee"; // app ID
-static NSString* secret = @"df9d600f-d71d-43fd-a3c9-60d085f6350b"; // app key
+static NSString* clientId = @"ТАНЫ АПП АйДи"; // app ID
+static NSString* secret = @"ТАНЫ АПП КЕЙ"; // app key
 static NSString* scope = @"http://api.mobicom.mn/oauth/v1/resource/voicemail/on"; // scope - хамрах эрх
 static NSString* otherScope = @""; // бусад scope
 static NSString* authUrl = @"http://api.mobicom.mn/oauth/v1/authorizer/authz"; // баталгаажуулах холбоос
