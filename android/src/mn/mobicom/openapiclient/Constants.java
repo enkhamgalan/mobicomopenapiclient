@@ -11,29 +11,29 @@ public class Constants {
 	/**
 	 * Вэб-д бүртгүүлсэн хөгжүүлэгчийн дугаар.
 	 */
-	public static final String CLIENT_ID = "3fd1c68e834e7936";
+	public static final String CLIENT_ID = "ТАНЫ АПП АйДи";
 	/**
 	 * Бүртгүүлсэн хөгжүүлэгчийн нууц үг.
 	 */
-	public static final String CLIENT_SECRET = "12423671-e9a9-437b-9efb-aed4184699c8";
+	public static final String CLIENT_SECRET = "ТАНЫ АПП КЕЙ";
 
 	/**
 	 * Ашиглаж болох үйлчилгээний нөөцүүд. Дуут шуудан нээх.
 	 */
-	public static final String SCOPE_VOICEMAILON = "http://api.mobicom.mn:8080/OpenApiResourceCenter/resource/voicemail/on";
+	public static final String SCOPE_VOICEMAILON = "http://api.mobicom.mn/oauth/v1/resource/voicemail/on";
 	/**
 	 * Ашиглаж болох үйлчилгээний нөөцүүд. Дуут шуудан хаах.
 	 */
-	public static final String SCOPE_VOICEMAILOFF = "http://api.mobicom.mn:8080/OpenApiResourceCenter/resource/voicemail/off";
+	public static final String SCOPE_VOICEMAILOFF = "http://api.mobicom.mn/oauth/v1/resource/voicemail/off";
 
 	/**
 	 * Хэрэглэгч нэвтрэх URL.
 	 */
-	public static final String REQUEST_URL = "http://api.mobicom.mn:8080/OpenApiAuthorizer/endpoint/authz";
+	public static final String REQUEST_URL = "http://api.mobicom.mn/oauth/v1/authorizer/authz";
 	/**
 	 * OpenAPI-с token авах URL.
 	 */
-	public static final String ACCESS_URL = "http://api.mobicom.mn:8080/OpenApiTokenizer/endpoint/token";
+	public static final String ACCESS_URL = "http://api.mobicom.mn/oauth/v1/tokenizer/token";
 	/**
 	 * Хэрэглэгчийн нэвтрэлтийн хариуг хүлээж авах програмын хэсэг.
 	 */
