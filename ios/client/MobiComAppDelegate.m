@@ -12,10 +12,10 @@
 /* MobiCom Open API баталгаажуулалт */
 static NSString* clientId = @"3fe8654e930afcee"; // app ID
 static NSString* secret = @"df9d600f-d71d-43fd-a3c9-60d085f6350b"; // app key
-static NSString* scope = @"http://api.mobicom.mn:8080/OpenApiResourceCenter/resource/voicemail/on"; // scope - хамрах эрх
+static NSString* scope = @"http://api.mobicom.mn/oauth/v1/resource/voicemail/on"; // scope - хамрах эрх
 static NSString* otherScope = @""; // бусад scope
-static NSString* authUrl = @"http://api.mobicom.mn:8080/OpenApiAuthorizer/endpoint/authz"; // баталгаажуулах холбоос
-static NSString* tokenUrl = @"http://api.mobicom.mn:8080/OpenApiTokenizer/endpoint/token"; // зөвшөөрөл авах холбоос
+static NSString* authUrl = @"http://api.mobicom.mn/oauth/v1/authorizer/authz"; // баталгаажуулах холбоос
+static NSString* tokenUrl = @"http://api.mobicom.mn/oauth/v1/tokenizer/token"; // зөвшөөрөл авах холбоос
 static NSString* redirectUrl = @"http://localhost5"; // амжилттай тохиолдолд буцах холбоос
 static NSString* accountType = @"VoiceMail"; // үйлчилгээний төрөл
 
