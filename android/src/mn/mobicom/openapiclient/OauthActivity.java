@@ -1,24 +1,24 @@
 package mn.mobicom.openapiclient;
 
-import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
-import net.smartam.leeloo.client.OAuthClient;
-import net.smartam.leeloo.client.URLConnectionClient;
-import net.smartam.leeloo.client.request.OAuthClientRequest;
-import net.smartam.leeloo.client.response.OAuthAccessTokenResponse;
-import net.smartam.leeloo.client.response.OAuthJSONAccessTokenResponse;
-import net.smartam.leeloo.common.message.types.GrantType;
+import mn.mobicom.oauth2.OAuthAuthorizationException;
+import mn.mobicom.oauth2.OAuthClient;
+import mn.mobicom.oauth2.OAuthException;
+import mn.mobicom.oauth2.OAuthTokenException;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
-import android.widget.CompoundButton;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ToggleButton;
 
 /**
  * OpenAPI руу холбогдох класс.
@@ -29,16 +29,8 @@ import android.widget.ToggleButton;
 public class OauthActivity extends Activity {
 
 	private static final String TAG = "OAUTH";
-
-	/**
-	 * Хэрэглэгчийн нэвтрэлтийг баталгаажуулсан код.
-	 */
-	String code = null;
-	/**
-	 * OpenAPI-с ирэх token. Хэрэглэгчийн үйлчилгээ идэвхжүүлэх хүсэлт илгээхдээ
-	 * ашиглана.
-	 */
-	String token = null;
+	public static String refresh_token = null;
+	public static String access_token = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,101 +38,100 @@ public class OauthActivity extends Activity {
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
 				.permitAll().build();
 		StrictMode.setThreadPolicy(policy);
-		setContentView(R.layout.activity_oauth);
 
-		// Үйлчилгээ идэвхжүүлэх товч
-		ToggleButton button = (ToggleButton) findViewById(R.id.toggleButton1);
-		button.setChecked(true);
-		button.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
-				if (token != null) {
-					sendUserRequest(isChecked);
-				} else {
-					getToken();
-					sendUserRequest(isChecked);
+		SharedPreferences settings = getSharedPreferences(
+				Constants.OAUTH_CALLBACK_SCHEME, 0);
+		OauthActivity.refresh_token = settings.getString("refresh_token", null);
+		OauthActivity.access_token = settings.getString("access_token", null);
+		setContentView(R.layout.activity_oauth);
+		// message илгээх товч
+		Button button = (Button) findViewById(R.id.sendButton);
+		button.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				String phone = ((EditText) findViewById(R.id.phoneNumber))
+						.getText().toString();
+				String text = ((EditText) findViewById(R.id.messageField))
+						.getText().toString();
+				String content = "text=#text&to=#phone";
+				try {
+					content = content.replace("#text",
+							URLEncoder.encode(text, "UTF-8")).replace("#phone",
+							URLEncoder.encode(phone, "UTF-8"));
+				} catch (UnsupportedEncodingException e2) {
+				}
+				while (true) {
+					try {
+						//sms илгээж байна
+						String res = OAuthClient
+								.useResource(Constants.URL_SMS_SEND + "?"
+										+ content);
+						Toast.makeText(getApplicationContext(), res,
+								Toast.LENGTH_LONG).show();
+						break;
+					} catch (OAuthException e) {
+						if (e instanceof OAuthTokenException) {
+							try {
+								OAuthClient.refreshToken();
+								continue;
+							} catch (OAuthException e1) {
+								e = e1;
+							}
+						}
+						handleOAuthException(e);
+						break;
+					}
 				}
 			}
 		});
-
-		// Redirect хийсэн хариунаас кодыг салгаж авах
-		parseCode();
-
-		// Token авах
-		getToken();
-	}
-
-	/**
-	 * Хэрэглэгчийн хүсэлтийг илгээхэд ашиглах token авах.
-	 */
-	private void getToken() {
-		OAuthClientRequest request = null;
-		if (code != null) {
-			try {
-				request = OAuthClientRequest
-						.tokenLocation(Constants.ACCESS_URL)
-						.setClientId(Constants.CLIENT_ID)
-						.setClientSecret(Constants.CLIENT_SECRET).setCode(code)
-						.setGrantType(GrantType.AUTHORIZATION_CODE)
-						.setRedirectURI(Constants.OAUTH_CALLBACK_URL)
-						.buildBodyMessage();
-				OAuthClient client = new OAuthClient(new URLConnectionClient());
-
-				Class<? extends OAuthAccessTokenResponse> cl = OAuthJSONAccessTokenResponse.class;
-
-				OAuthAccessTokenResponse oauthResponse = client.accessToken(
-						request, cl);
-
-				token = oauthResponse.getAccessToken();
-				Log.i(TAG, "token=" + token);
-			} catch (Exception e) {
-				Log.e(TAG, "error on token", e);
+		// хэрэглэгч logout хийх товч
+		Button logout = (Button) findViewById(R.id.logout);
+		logout.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				SharedPreferences settings = getSharedPreferences(
+						Constants.OAUTH_CALLBACK_SCHEME, 0);
+				// refresh token, access token-ыг устгана
+				settings.edit().clear().commit();
+				startActivity(new Intent(OauthActivity.this, MainActivity.class));
+				finish();
 			}
-		} else {
-			startActivity(new Intent(this, MainActivity.class));
-			finish();
-		}
-	}
-
-	/**
-	 * Хэрэглэгчийн үйлчилгээ идэвхжүүлэх хүсэлтийг илгээх.
-	 * 
-	 * @param isChecked
-	 *            Үйлчилгээг нээх эсвэл хаахыг заана.
-	 */
-	private void sendUserRequest(boolean isChecked) {
-		try {
-			String res = RequestSender.send(
-					isChecked ? Constants.SCOPE_VOICEMAILON
-							: Constants.SCOPE_VOICEMAILOFF, "access_token="
-							+ token, null);
-			if (res.contains("\"Code\":0")) {
-				Toast.makeText(getApplicationContext(),
-						"Хүсэлт амжилттай бүртгэгдлээ", Toast.LENGTH_LONG)
-						.show();
-			} else {
-				Toast.makeText(getApplicationContext(),
-						"Хүсэлтийг биелүүлэхэд алдаа гарлаа.",
-						Toast.LENGTH_LONG).show();
-			}
-			Log.i(TAG, "RES=" + res);
-		} catch (IOException e) {
-			Log.i(TAG, "Sending user's request failed.", e);
-		}
-	}
-
-	/**
-	 * Хэрэглэгчийн нэвтрэлтийн хариуг OAUTH_CALLBACK_URL-р авах бөгөөд
-	 * хариунаас кодыг нь салгаж авах.
-	 */
-	private void parseCode() {
+		});
 		Intent intent = getIntent();
 		if (Intent.ACTION_VIEW.equals(intent.getAction())) {
 			Uri uri = intent.getData();
 			Log.i(TAG, "URI=" + uri.toString());
-			code = uri.getQueryParameter("code");
+			// OpenAPI-с redirect хийж authorization кодыг илгээсэн бол
+			String code = uri.getQueryParameter("code");
 			Log.i(TAG, "CODE=" + code);
+			if (code != null) {
+				try {
+					OAuthClient.getTokens(code);
+				} catch (OAuthException e) {
+					handleOAuthException(e);
+				}
+			}
+			// OpenAPI-с redirect хийж ямар нэг алдаа буцсан бол
+			String error = uri.getQueryParameter("error");
+			if (error != null) {
+				handleOAuthException(new OAuthAuthorizationException(
+						"Хүсэлтийг биелүүлэхэд алдаа гарлаа. " + error));
+			}
+		}
+		return;
+	}
+
+	/*
+	 * Exception-с хамаарч юу хийхийг шийдэнэ
+	 * 
+	 * @param e OAuthException
+	 */
+	private void handleOAuthException(OAuthException e) {
+		Toast.makeText(getApplicationContext(), e.getMessage(),
+				Toast.LENGTH_LONG).show();
+		if (e instanceof OAuthAuthorizationException) {
+			
+			OAuthClient.refresh_token = null;
+			OAuthClient.access_token = null;
+			startActivity(new Intent(this, MainActivity.class));
 		}
 	}
 

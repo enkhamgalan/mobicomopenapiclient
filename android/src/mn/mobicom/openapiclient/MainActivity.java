@@ -1,16 +1,18 @@
 package mn.mobicom.openapiclient;
 
-import net.smartam.leeloo.client.request.OAuthClientRequest;
-import net.smartam.leeloo.common.exception.OAuthSystemException;
+import mn.mobicom.oauth2.OAuthClient;
+import mn.mobicom.oauth2.OAuthException;
+import mn.mobicom.oauth2.TokenListener;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 /**
  * Үндсэн класс.
@@ -26,7 +28,35 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		final SharedPreferences settings = getSharedPreferences(
+				Constants.OAUTH_CALLBACK_SCHEME, 0);
+		OAuthClient.client_id = Constants.CLIENT_ID;
+		OAuthClient.client_secret = Constants.CLIENT_SECRET;
+		OAuthClient.redirect_uri = Constants.OAUTH_CALLBACK_URL;
+		OAuthClient.tokenListener = new TokenListener() {
 
+			@Override
+			public void refreshToken(String refreshToken) {
+				// refresh token-g хадгалаж байна
+				settings.edit().putString("refresh_token", refreshToken)
+						.commit();
+			}
+
+			@Override
+			public void accessToken(String accessToken) {
+				// access token-g хадгалаж байна
+				settings.edit().putString("access_token", accessToken).commit();
+			}
+		};
+		String rt = settings.getString("refresh_token", null);
+		// refresh token хадгалагдсан бол
+		if (rt != null) {
+
+			OAuthClient.refresh_token = rt;
+			startActivity(new Intent(this, OauthActivity.class));
+			finish();
+			return;
+		}
 		// Нэвтрэх товчийг дарангуут хэрэглэгчийн нэвтрэх вэб броузерийг
 		// ачааллана.
 		Button login = (Button) findViewById(R.id.button1);
@@ -50,24 +80,17 @@ public class MainActivity extends Activity {
 	 * хийлгэнэ.
 	 */
 	public void userLogin() {
-		OAuthClientRequest request = null;
+		String url;
 		try {
-			// Хөгжүүлэлэгчийн хүсэлтийг угсарч байна.
-			request = OAuthClientRequest
-					.authorizationLocation(Constants.REQUEST_URL)
-					.setClientId(Constants.CLIENT_ID)
-					.setRedirectURI(Constants.OAUTH_CALLBACK_URL)
-					.setScope(
-							Constants.SCOPE_VOICEMAILOFF + " "
-									+ Constants.SCOPE_VOICEMAILON)
-					.buildQueryMessage();
-		} catch (OAuthSystemException oase) {
-			Log.i(TAG, "error", oase);
+			url = OAuthClient.authorize(Constants.SCOPE_SMS_SEND);
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+			startActivity(intent);// Хөгжүүлэгчийн хүсэлтийг шинэ вэб броузер
+									// нээж байна.
+			finish();
+		} catch (OAuthException e) {
+			Toast.makeText(getApplicationContext(), e.getMessage(),
+					Toast.LENGTH_LONG).show();
 		}
-		// Хөгжүүлэгчийн хүсэлтийг шинэ вэб броузер нээж байна.
-		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(request
-				.getLocationUri() + "&response_type=code"));
-		startActivity(intent);
-		finish();
+
 	}
 }
