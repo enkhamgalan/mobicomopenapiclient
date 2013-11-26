@@ -81,14 +81,19 @@ public class MainActivity extends Activity {
 		String url;
 		try {
 			url = OAuthClient.authorize(Constants.SCOPE_SMS_SEND);
-			Intent intent = new Intent(this, WebViewActivity.class);
-			intent.setData(Uri.parse(url));
+			Intent intent = null;
+			if (WebViewActivity.class.isAnnotationPresent(Deprecated.class)) {
+				intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+			} else {
+				intent = new Intent(this, WebViewActivity.class);
+				intent.setData(Uri.parse(url));
+			}
 			startActivity(intent);// Хөгжүүлэгчийн хүсэлтийг шинэ вэб броузер
 									// нээж байна.
+			finish();
 		} catch (OAuthException e) {
 			Toast.makeText(getApplicationContext(), e.getMessage(),
 					Toast.LENGTH_LONG).show();
 		}
-
 	}
 }

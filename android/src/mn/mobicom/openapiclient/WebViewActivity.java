@@ -12,6 +12,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+@Deprecated
 public class WebViewActivity extends Activity {
 
 	private static final String TAG = "WEBVIEW";

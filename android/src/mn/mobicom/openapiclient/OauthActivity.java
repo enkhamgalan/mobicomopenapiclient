@@ -101,10 +101,16 @@ public class OauthActivity extends Activity {
 			public void onClick(View v) {
 				try {
 					String url = OAuthClient.changePassword();
-					Intent i = new Intent(OauthActivity.this,
-							WebViewActivity.class);
-					i.setData(Uri.parse(url));
+					Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+					Intent intent = null;
+					if (WebViewActivity.class.isAnnotationPresent(Deprecated.class)) {
+						intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+					} else {
+						intent = new Intent(OauthActivity.this, WebViewActivity.class);
+						intent.setData(Uri.parse(url));
+					}
 					startActivity(i);
+					finish();
 				} catch (OAuthException e) {
 					handleOAuthException(e);
 				}
@@ -163,6 +169,7 @@ public class OauthActivity extends Activity {
 			OAuthClient.refresh_token = null;
 			OAuthClient.access_token = null;
 			startActivity(new Intent(this, MainActivity.class));
+			finish();
 		}
 	}
 

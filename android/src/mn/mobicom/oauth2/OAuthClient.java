@@ -206,19 +206,16 @@ public class OAuthClient {
 	 * @see OAuthException
 	 */
 	public static String changePassword() throws OAuthException {
-		String url = "https://api.mobicom.mn/oauth/authorization/changepassword";
-		String content = "client_id=%s&client_secret=%s&redirect_uri=%s&grant_type=refresh_token&refresh_token=%s";
+		String url = "https://api.mobicom.mn/oauth/authorization/cp";
+		String content = "client_id=%s&redirect_uri=%s";
 		try {
 			content = String.format(
 					content,
 					client_id == null ? "" : URLEncoder.encode(client_id,
 							"UTF-8"),// ///////
-					client_secret == null ? "" : URLEncoder.encode(
-							client_secret, "UTF-8"),// /////////
 					redirect_uri == null ? "" : URLEncoder.encode(redirect_uri,
-							"UTF-8"),// //////////////////
-					refresh_token == null ? "" : URLEncoder.encode(
-							refresh_token, "UTF-8"));
+							"UTF-8")// //////////////////
+					);
 			return url + "?" + content;
 		} catch (IOException e) {
 			Log.e(TAG, "Sending refresh_token request", e);
