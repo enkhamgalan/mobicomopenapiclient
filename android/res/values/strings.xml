@@ -5,5 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Сайн байна уу?</string>
     <string name="title_activity_oauth">Үйлчилгээ идэвхжүүлэх</string>
+    <string name="title_activity_web_view">Mobicom OAuth 2.0</string>
 
 </resources>

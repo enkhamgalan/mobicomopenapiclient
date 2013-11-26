@@ -199,6 +199,37 @@ public class OAuthClient {
 	}
 
 	/*
+	 * Token refresh хийх функц
+	 * 
+	 * @exception OAuthException OAuth 2.0 алдаа гарсан үед
+	 * 
+	 * @see OAuthException
+	 */
+	public static String changePassword() throws OAuthException {
+		String url = "https://api.mobicom.mn/oauth/authorization/changepassword";
+		String content = "client_id=%s&client_secret=%s&redirect_uri=%s&grant_type=refresh_token&refresh_token=%s";
+		try {
+			content = String.format(
+					content,
+					client_id == null ? "" : URLEncoder.encode(client_id,
+							"UTF-8"),// ///////
+					client_secret == null ? "" : URLEncoder.encode(
+							client_secret, "UTF-8"),// /////////
+					redirect_uri == null ? "" : URLEncoder.encode(redirect_uri,
+							"UTF-8"),// //////////////////
+					refresh_token == null ? "" : URLEncoder.encode(
+							refresh_token, "UTF-8"));
+			return url + "?" + content;
+		} catch (IOException e) {
+			Log.e(TAG, "Sending refresh_token request", e);
+			throw new OAuthException("Та интернет холболтоо шалгана уу");
+		} catch (Exception e) {
+			Log.e(TAG, "", e);
+			throw new OAuthApplicationException("Алдаатай програм байна");
+		}
+	}
+
+	/*
 	 * @param url resource-н url
 	 * 
 	 * @return resource resposne

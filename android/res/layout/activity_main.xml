@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/changepassword"
         android:layout_width="300px"
         android:layout_height="100px"
         android:layout_alignParentBottom="true"

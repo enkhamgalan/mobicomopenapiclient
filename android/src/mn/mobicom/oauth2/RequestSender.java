@@ -83,6 +83,7 @@ public class RequestSender {
 			con.setUseCaches(true);
 			con.setDoOutput(true);
 			con.setDoInput(true);
+			HttpsURLConnection.setFollowRedirects(false);
 			con.setConnectTimeout(20000);
 			con.setReadTimeout(20000);
 			con.setRequestMethod("POST");

@@ -63,4 +63,12 @@
         android:layout_alignParentRight="true"
         android:text="Гарах" />
 
+    <Button
+        android:id="@+id/changepassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/sendButton"
+        android:text="Нууц үг солих" />
+
 </RelativeLayout>

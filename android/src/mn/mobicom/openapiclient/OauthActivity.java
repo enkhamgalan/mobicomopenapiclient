@@ -61,7 +61,7 @@ public class OauthActivity extends Activity {
 				}
 				while (true) {
 					try {
-						//sms илгээж байна
+						// sms илгээж байна
 						String res = OAuthClient
 								.useResource(Constants.URL_SMS_SEND + "?"
 										+ content);
@@ -95,6 +95,21 @@ public class OauthActivity extends Activity {
 				finish();
 			}
 		});
+		// Нууц үг солих
+		Button changepassword = (Button) findViewById(R.id.changepassword);
+		changepassword.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				try {
+					String url = OAuthClient.changePassword();
+					Intent i = new Intent(OauthActivity.this,
+							WebViewActivity.class);
+					i.setData(Uri.parse(url));
+					startActivity(i);
+				} catch (OAuthException e) {
+					handleOAuthException(e);
+				}
+			}
+		});
 		Intent intent = getIntent();
 		if (Intent.ACTION_VIEW.equals(intent.getAction())) {
 			Uri uri = intent.getData();
@@ -102,18 +117,34 @@ public class OauthActivity extends Activity {
 			// OpenAPI-с redirect хийж authorization кодыг илгээсэн бол
 			String code = uri.getQueryParameter("code");
 			Log.i(TAG, "CODE=" + code);
-			if (code != null) {
-				try {
+			try {
+				if (code != null) {
 					OAuthClient.getTokens(code);
-				} catch (OAuthException e) {
-					handleOAuthException(e);
 				}
-			}
-			// OpenAPI-с redirect хийж ямар нэг алдаа буцсан бол
-			String error = uri.getQueryParameter("error");
-			if (error != null) {
-				handleOAuthException(new OAuthAuthorizationException(
-						"Хүсэлтийг биелүүлэхэд алдаа гарлаа. " + error));
+				// OpenAPI-с redirect хийж ямар нэг алдаа буцсан бол
+				String error = uri.getQueryParameter("error");
+				if (error != null) {
+					if (error.contains("invalid_scope")) {
+						throw new OAuthAuthorizationException(
+								"Програмын эрх хүрэлцэхгүй байна");
+					} else if (error.contains("unsupported")) {
+						throw new OAuthAuthorizationException(
+								"Алдаатай програм байна");
+					} else if (error.contains("server_error")) {
+						throw new OAuthAuthorizationException("Та ахин үзнэ үү");
+					} else if (error.contains("cancel")) {
+						throw new OAuthAuthorizationException(
+								"Хэрэглэгч нэврэхээс татгалзлаа");
+					} else if (error.contains("access_denied")) {
+						throw new OAuthAuthorizationException(
+								"Хэрэглэгч нэврэхээс татгалзлаа");
+					} else {
+						throw new OAuthAuthorizationException(
+								"Интернет холбоосоо шалгана уу");
+					}
+				}
+			} catch (OAuthException ex) {
+				handleOAuthException(ex);
 			}
 		}
 		return;
@@ -128,7 +159,7 @@ public class OauthActivity extends Activity {
 		Toast.makeText(getApplicationContext(), e.getMessage(),
 				Toast.LENGTH_LONG).show();
 		if (e instanceof OAuthAuthorizationException) {
-			
+
 			OAuthClient.refresh_token = null;
 			OAuthClient.access_token = null;
 			startActivity(new Intent(this, MainActivity.class));

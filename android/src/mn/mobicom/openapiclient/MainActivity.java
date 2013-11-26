@@ -22,8 +22,6 @@ import android.widget.Toast;
  */
 public class MainActivity extends Activity {
 
-	private static final String TAG = "MainActivity";
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,7 +57,7 @@ public class MainActivity extends Activity {
 		}
 		// Нэвтрэх товчийг дарангуут хэрэглэгчийн нэвтрэх вэб броузерийг
 		// ачааллана.
-		Button login = (Button) findViewById(R.id.button1);
+		Button login = (Button) findViewById(R.id.changepassword);
 		login.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -83,10 +81,10 @@ public class MainActivity extends Activity {
 		String url;
 		try {
 			url = OAuthClient.authorize(Constants.SCOPE_SMS_SEND);
-			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+			Intent intent = new Intent(this, WebViewActivity.class);
+			intent.setData(Uri.parse(url));
 			startActivity(intent);// Хөгжүүлэгчийн хүсэлтийг шинэ вэб броузер
 									// нээж байна.
-			finish();
 		} catch (OAuthException e) {
 			Toast.makeText(getApplicationContext(), e.getMessage(),
 					Toast.LENGTH_LONG).show();
