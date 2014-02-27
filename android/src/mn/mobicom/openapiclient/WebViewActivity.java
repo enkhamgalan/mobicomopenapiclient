@@ -16,7 +16,7 @@ import android.webkit.WebViewClient;
  * 
  * @author Developer Deprecated-g авбал Login хэсэг Webview-ээр дуудагдана.
  */
-//@Deprecated
+@Deprecated
 public class WebViewActivity extends Activity {
 
 	private static final String TAG = "WEBVIEW";
