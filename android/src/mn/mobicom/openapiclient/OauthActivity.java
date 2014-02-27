@@ -91,28 +91,34 @@ public class OauthActivity extends Activity {
 						Constants.OAUTH_CALLBACK_SCHEME, 0);
 				// refresh token, access token-ыг устгана
 				settings.edit().clear().commit();
-				startActivity(new Intent(OauthActivity.this, MainActivity.class));
-				finish();
+				String url = Constants.LOGOUT_URL;
+				Intent intent = null;
+				if (WebViewActivity.class.isAnnotationPresent(Deprecated.class)) {
+					intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+					startActivity(intent);
+				} else {
+					intent = new Intent(OauthActivity.this,
+							WebViewActivity.class);
+					intent.setData(Uri.parse(url));
+					startActivity(intent);
+					finish();
+				}
 			}
 		});
 		// Нууц үг солих
 		Button changepassword = (Button) findViewById(R.id.changepassword);
 		changepassword.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				try {
-					String url = OAuthClient.changePassword();
-					Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-					Intent intent = null;
-					if (WebViewActivity.class.isAnnotationPresent(Deprecated.class)) {
-						intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-					} else {
-						intent = new Intent(OauthActivity.this, WebViewActivity.class);
-						intent.setData(Uri.parse(url));
-					}
-					startActivity(i);
-					finish();
-				} catch (OAuthException e) {
-					handleOAuthException(e);
+				String url = Constants.CP_URL;
+				Intent intent = null;
+				if (WebViewActivity.class.isAnnotationPresent(Deprecated.class)) {
+					intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+					startActivity(intent);
+				} else {
+					intent = new Intent(OauthActivity.this,
+							WebViewActivity.class);
+					intent.setData(Uri.parse(url));
+					startActivity(intent);
 				}
 			}
 		});
@@ -129,6 +135,7 @@ public class OauthActivity extends Activity {
 				}
 				// OpenAPI-с redirect хийж ямар нэг алдаа буцсан бол
 				String error = uri.getQueryParameter("error");
+				String info = uri.getQueryParameter("info");
 				if (error != null) {
 					if (error.contains("invalid_scope")) {
 						throw new OAuthAuthorizationException(
@@ -144,10 +151,15 @@ public class OauthActivity extends Activity {
 					} else if (error.contains("access_denied")) {
 						throw new OAuthAuthorizationException(
 								"Хэрэглэгч нэврэхээс татгалзлаа");
+					} else if (error.contains("logout")) {
+						throw new OAuthAuthorizationException("Гарлаа");
 					} else {
 						throw new OAuthAuthorizationException(
 								"Интернет холбоосоо шалгана уу");
 					}
+				}
+				if (info != null) {
+					throw new OAuthAuthorizationException(info);
 				}
 			} catch (OAuthException ex) {
 				handleOAuthException(ex);

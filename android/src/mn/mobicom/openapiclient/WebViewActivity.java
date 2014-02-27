@@ -12,7 +12,11 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-@Deprecated
+/**
+ * 
+ * @author Developer Deprecated-g авбал Login хэсэг Webview-ээр дуудагдана.
+ */
+//@Deprecated
 public class WebViewActivity extends Activity {
 
 	private static final String TAG = "WEBVIEW";
@@ -25,8 +29,8 @@ public class WebViewActivity extends Activity {
 		String url = this.getIntent().getData().toString();
 		if (url != null) {
 			Log.i(TAG, url);
-			// web.loadUrl(url);
-			web.postUrl(url, "".getBytes());
+			web.loadUrl(url);
+			// web.postUrl(url, "".getBytes());
 			WebSettings settings = web.getSettings();
 			settings.setDefaultTextEncodingName("utf-8");
 			web.setWebViewClient(new WebViewClient() {
@@ -36,6 +40,18 @@ public class WebViewActivity extends Activity {
 					if (url.startsWith(Constants.OAUTH_CALLBACK_SCHEME)) {
 						Intent intent = new Intent(Intent.ACTION_VIEW, Uri
 								.parse(url));
+						startActivity(intent);
+						finish();
+					} else if (url.startsWith(Constants.LOGOUTOK_URL)) {
+						Intent intent = new Intent(Intent.ACTION_VIEW, Uri
+								.parse(Constants.OAUTH_CALLBACK_URL
+										+ "?error=logout"));
+						startActivity(intent);
+						finish();
+					} else if (url.startsWith(Constants.CPOK_URL)) {
+						Intent intent = new Intent(Intent.ACTION_VIEW, Uri
+								.parse(Constants.OAUTH_CALLBACK_URL
+										+ "?error=back"));
 						startActivity(intent);
 						finish();
 					} else {
@@ -54,11 +70,9 @@ public class WebViewActivity extends Activity {
 				@Override
 				public void onReceivedError(WebView view, int errorCode,
 						String description, String failingUrl) {
-					Intent intent = new Intent(Intent.ACTION_VIEW, Uri
-							.parse(Constants.OAUTH_CALLBACK_URL
-									+ "?error=conneciton"));
-					startActivity(intent);
-					finish();
+					Log.i(TAG, "error code: "+errorCode);
+					Log.i(TAG, "description: "+description);
+					Log.i(TAG, "failingUrl: "+failingUrl);
 				}
 			});
 		}

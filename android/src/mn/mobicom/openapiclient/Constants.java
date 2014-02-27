@@ -11,11 +11,11 @@ public class Constants {
 	/**
 	 * Вэб-д бүртгүүлсэн хөгжүүлэгчийн дугаар.
 	 */
-	public static final String CLIENT_ID = "3fe5cf7d2fbc085b";
+	public static final String CLIENT_ID = "3fea78052825a63f";
 	/**
 	 * Бүртгүүлсэн хөгжүүлэгчийн нууц үг.
 	 */
-	public static final String CLIENT_SECRET = "293688b6-71c5-4968-8a8c-78ed12e74dcc";
+	public static final String CLIENT_SECRET = "38eb9920-d5c1-484b-ac47-8611b289685a";
 
 	/**
 	 * Ашиглаж болох үйлчилгээний нөөцүүд. Message ilgeeh.
@@ -43,4 +43,9 @@ public class Constants {
 	 */
 	public static final String OAUTH_CALLBACK_URL = OAUTH_CALLBACK_SCHEME
 			+ "://" + OAUTH_CALLBACK_HOST;
+	
+	public static final String LOGOUT_URL = "https://accounts.mobicom.mn/logout.html#app";
+	public static final String LOGOUTOK_URL = "https://accounts.mobicom.mn/login.html#app";
+	public static final String CP_URL = "https://accounts.mobicom.mn/security.html#app";
+	public static final String CPOK_URL = "https://accounts.mobicom.mn/account.html#app";
 }

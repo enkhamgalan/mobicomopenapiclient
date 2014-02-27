@@ -205,25 +205,14 @@ public class OAuthClient {
 	 * 
 	 * @see OAuthException
 	 */
-	public static String changePassword() throws OAuthException {
-		String url = "https://api.mobicom.mn/oauth/authorization/cp";
-		String content = "client_id=%s&redirect_uri=%s";
-		try {
-			content = String.format(
-					content,
-					client_id == null ? "" : URLEncoder.encode(client_id,
-							"UTF-8"),// ///////
-					redirect_uri == null ? "" : URLEncoder.encode(redirect_uri,
-							"UTF-8")// //////////////////
-					);
-			return url + "?" + content;
-		} catch (IOException e) {
-			Log.e(TAG, "Sending refresh_token request", e);
-			throw new OAuthException("Та интернет холболтоо шалгана уу");
-		} catch (Exception e) {
-			Log.e(TAG, "", e);
-			throw new OAuthApplicationException("Алдаатай програм байна");
-		}
+	public static String changePassword() {
+		String url = "https://accounts.mobicom.mn/security.html";
+		return url;
+	}
+	
+	public static String logout() {
+		String url = "https://accounts.mobicom.mn/logout.html";
+		return url;
 	}
 
 	/*
